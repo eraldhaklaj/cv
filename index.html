@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Erald Haklaj — Full-Stack Engineer</title>
+<title>Erald Haklaj · Full-Stack Engineer</title>
 <meta name="description" content="Full-Stack Engineer, 8+ years, front-end deep. I take over live systems and restructure them without stopping the roadmap. Remote from Tirana (CET).">
 <style>
   :root{
@@ -54,7 +54,20 @@
     table.rh td{ display:block; }
     .rh-r{ text-align:left; padding:2px 0 0; width:auto; }
   }
-  @media print{ .dl{display:none} body{font-size:10pt} .page{padding:0} }
+  @media print{
+    .dl{display:none}
+    body{ font-size:8.75pt; line-height:1.38; }
+    .page{ padding:0; max-width:none; }
+    .hdr{ margin-bottom:12px; }
+    .hdr img{ width:84px; height:84px; }
+    h2{ margin:18px 0 8px; }
+    p{ margin:0 0 7px; }
+    ul{ margin:4px 0 0; }
+    li{ margin:0 0 5px; }
+    .role{ margin-bottom:15px; }
+    .context{ margin:2px 0 6px; }
+    ul{ break-inside:auto; }
+  }
 </style>
 </head>
 <body>
@@ -73,28 +86,42 @@
 
   <h2>Summary</h2>
   <p>Full-Stack Engineer with 8+ years of experience, most of it leading from the front end. I build web products end to end, from the first product conversation through to something shipped and polished, and I usually reach for the simpler solution before the bigger one. My work has run in production for brands like L'Oréal, the NFL, and some of Europe's best-known fashion labels. When something breaks, I take ownership of it, and I see the last 10% through.</p>
+  <p>I don't hand-write much code anymore. I direct Claude Code and Cursor, and the useful part is knowing when to throw the output away, so most of my day goes on architecture and review.</p>
 
   <h2>Core Skills</h2>
   <div class="skills">
-    <p><b>Front end:</b> React, Next.js, EmberJS, Vite, Redux, Three.js, PReact, JavaScript/TypeScript, SCSS, Bootstrap, HTML</p>
-    <p><b>Back end:</b> Node.js, Ruby on Rails, Java (Spring), PHP, REST APIs, JWT auth, payment integrations</p>
-    <p><b>Data:</b> PostgreSQL, MySQL, PL/SQL, relational schema design</p>
-    <p><b>Ways of working:</b> owning features end to end, product and UX judgment, large refactors, performance profiling, A/B testing and feature flags, agile teams and release rotations, code review and mentoring</p>
+    <p><b>Front end:</b> React, Next.js, TypeScript, EmberJS, Vite, Redux, Three.js, Storybook, GraphQL and Apollo Client, JavaScript, SCSS, Bootstrap, HTML and CSS</p>
+    <p><b>Back end:</b> Node.js, Ruby on Rails, Java (Spring), Python and FastAPI, PHP, REST APIs, JWT auth, payment integrations</p>
+    <p><b>Data:</b> PostgreSQL, MySQL, PL/SQL, Supabase, relational schema design</p>
+    <p><b>Ways of working:</b> owning features end to end, product and UX judgment, large refactors, performance profiling, A/B testing and feature flags, agile teams and release rotations, code review and mentoring, directing coding agents against a spec</p>
   </div>
 
   <h2>Experience</h2>
 
   <div class="role">
     <table class="rh"><tr>
+      <td class="rh-l"><span class="co">selfcrafted</span> &nbsp;·&nbsp; Founder and Full-Stack Engineer</td>
+      <td class="rh-r">Aug 2026 to Present</td>
+    </tr></table>
+    <div class="context">My own product. A loop that scouts work matching someone's profile, scores it, drafts the application in their own voice, and waits for a person to approve before anything is sent. Remote.</div>
+    <ul>
+      <li>Built and shipped the whole stack on my own. FastAPI on Cloud Run, Supabase Postgres, and an Expo React Native app, with Google sign-in verified locally against the project's asymmetric JWKS rather than a shared secret.</li>
+      <li>Built per-user credential custody with envelope encryption and refresh tokens that rotate on every use, split the scheduler into a dispatcher and a per-user worker after the serial version fell over at three users, and wired scoring and drafting to the Claude API across two model tiers.</li>
+    </ul>
+  </div>
+
+  <div class="role">
+    <table class="rh"><tr>
       <td class="rh-l"><span class="co">Toffee AI</span> &nbsp;·&nbsp; Full-Stack Developer (freelance)</td>
       <td class="rh-r">Sep 2025 to Present</td>
     </tr></table>
-    <div class="context">A consumer character-AI chat platform (React, Next.js, React Query). Remote.</div>
+    <div class="context">A consumer character-AI chat platform at about a thousand daily users. React, Next.js, TypeScript and React Query, with Flagsmith for rollouts and PostHog for instrumentation. Remote, part-time since mid-2026.</div>
     <ul>
-      <li>Built the character-creation feature end to end from just mock designs, owning the UX, the edge cases, and the architecture. It included a searchable tag field (debounced and cached, with infinite scroll over a paginated API), a four-step AI image-generation flow, progress that survives a page refresh, a report and moderation flow, public/unlisted/private characters, and a gradual A/B rollout with Flagsmith. About two months of work.</li>
+      <li>Built the character-creation feature end to end from just mock designs, so the UX and every edge case underneath it were mine to work out. A searchable tag field debounced and cached over a paginated API, a four-step AI image-generation flow, progress that survives a refresh, moderation and report flows, public/unlisted/private visibility, and a gradual A/B rollout behind Flagsmith. About two months of work.</li>
       <li>Brought the page load down from around three seconds to about one and a half. Part of that was an image pipeline that pre-generates full and medium sizes so the app sends smaller images first; part was cutting a heavy component from roughly 300 re-renders on load to about 10.</li>
-      <li>Worked across the stack, including back-end pull requests for character and chat sharing and for chat image and video generation, plus a public, slimmed-down endpoint that helped both SEO and first load.</li>
-      <li>Made release calls (ship or hold) on my own when they were needed.</li>
+      <li>Worked across the stack, including back-end pull requests for character and chat sharing and for chat media generation, plus a public slimmed-down endpoint that won back both SEO and first load.</li>
+      <li>Killed a footer bug class that produced a ticket roughly every three days across five pages, where fixing it on one page broke it on another. It sat deep in the DOM and absolutely positioned, so I moved it to a portal with a little per-page classing and the tickets stopped.</li>
+      <li>Made release calls (ship or hold) on my own when they were needed, and sat in the beta users' Discord reading feedback directly to find where people were getting stuck.</li>
     </ul>
   </div>
 
@@ -119,9 +146,9 @@
     </tr></table>
     <div class="context">A first-party data platform (surveys, quizzes, lead forms) used by L'Oréal, AutoZone, and the NFL, peaking at around a million sessions an hour. Tirana, Albania.</div>
     <ul>
+      <li>Built the campaign builder's visual flow map, the canvas where a client lays an experience out as draggable screen nodes with the routing between them drawn as edges. Custom pan and zoom over svg-pan-zoom, edge routing and hit-target handling, in Ember and SVG.</li>
       <li>Worked full-stack across three codebases (the platform, the renderer, and the embeddable widget) in EmberJS, Ruby on Rails, Node.js, PostgreSQL, and vanilla JS.</li>
-      <li>Owned features from the first product conversation all the way to release, and took my turn on the twice-weekly deploys and on-call.</li>
-      <li>Helped lead a four-month refactor of the styling system, moving from one database row per style override to a single merged schema, kept fully backwards-compatible and running next to the old one the whole time.</li>
+      <li>Owned features from the first product conversation through to release, took my turn on the twice-weekly deploys and on-call, and helped lead a four-month refactor of the styling system from one database row per style override to a single merged schema, kept backwards-compatible and running next to the old one throughout.</li>
       <li>Made questionnaires-by-email work, which the team had written off as impossible, by sending an email-safe first screen that links straight into the hosted version.</li>
     </ul>
   </div>
@@ -134,7 +161,7 @@
     <div class="context">Tirana, Albania.</div>
     <ul>
       <li>Built the whole front end of a national e-invoicing and fiscalization product (React and SCSS, on a Java/Spring and PostgreSQL back end), created for Albania's 2020 invoicing law. It covered the dashboard, invoice creation, and a lot of calculation-heavy screens, and I shaped the discount schema behind it.</li>
-      <li>On ebileta.al, an event and stadium ticketing site, added JWT auth, payments through a local bank and PayPal with currency conversion, an algorithm that picks the best block of seats for a group, and a ticket-sale module with event series.</li>
+      <li>On an event and stadium ticketing product, covering online purchase and printing at physical ticket offices, added JWT auth, payments through a local bank and PayPal with currency conversion, an algorithm that picks the best block of seats for a group, and a ticket-sale module with event series.</li>
     </ul>
   </div>
 
@@ -145,7 +172,7 @@
     </tr></table>
     <div class="context">Remote.</div>
     <ul>
-      <li>SaaS products, e-commerce sites, and landing pages for clients around the world, and front-end lead on the early team projects (React, jQuery, CSS). This is where the Top Rated Plus and 100% Job Success record began, across 22 jobs and more than 1,500 hours. Registered as a sole trader in Albania for straightforward international invoicing.</li>
+      <li>SaaS products, e-commerce sites, and landing pages for clients around the world, and front-end lead on the early team projects (React, jQuery, CSS). This is where the Top Rated Plus and 100% Job Success record began, across 24 contracts and more than 1,500 hours. Registered as a sole trader in Albania for straightforward international invoicing.</li>
     </ul>
   </div>
 
@@ -153,7 +180,7 @@
   <p class="foot">BSc, Computer Science. University of Tirana, Faculty of Natural Sciences. Oct 2016 to Jul 2019.</p>
 
   <h2>Languages</h2>
-  <p class="foot">Albanian (native). English (C1 reading, writing, and listening; B2 speaking).</p>
+  <p class="foot">Albanian (native). English (fluent, across nine years of daily work with US and German teams).</p>
 
 
 </div>
