@@ -1,6 +1,6 @@
 # Erald Haklaj · CV
 
-Full-Stack Engineer, leading from the front end. 8+ years, front-end deep, remote from Tirana (CET).
+Full-Stack Engineer | AI-native product builder. 8+ years, remote from Tirana (CET).
 
 **[Erald-Haklaj-CV.pdf](Erald-Haklaj-CV.pdf)**
 
