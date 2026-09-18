@@ -64,7 +64,7 @@
     p{ margin:0 0 8px; }
     ul{ margin:5px 0 0; }
     li{ margin:0 0 6px; }
-    .role{ margin-bottom:17px; break-inside:avoid; page-break-inside:avoid; }
+    .role{ margin-bottom:17px; }
     .context{ margin:2px 0 7px; }
   }
 </style>
@@ -96,32 +96,6 @@
   </div>
 
   <h2>Experience</h2>
-
-  <div class="role">
-    <table class="rh"><tr>
-      <td class="rh-l"><span class="co">vendas.al</span> &nbsp;·&nbsp; Founder and Full-Stack Engineer</td>
-      <td class="rh-r">Jul 2026 to Present</td>
-    </tr></table>
-    <div class="context">My own product, pre-launch. A real estate portal for Albania, agent-only listings, Albanian primary with a full English mirror. Six apps in one Turborepo monorepo, the public site and a separate agent workspace on its own subdomain, a Refine admin, a Fastify API with a background worker, an Expo app and a Playwright suite. Remote.</div>
-    <ul>
-      <li>Designed the data and search layer on Postgres with Drizzle and Typesense, and moved everything slow off the request path into thirteen BullMQ queues, covering image processing, search index sync, saved-search and favourites alerts, agency feed import, analytics rollup, sitemap generation and listing expiry.</li>
-      <li>Stripe does not serve Albanian-registered businesses, so rather than wait on a provider I built the billing core provider-agnostic with bank-transfer invoicing that carries Albanian TVSH, which is enough to launch on.</li>
-      <li>One session cookie spans the subdomains so the agent workspace authenticates against the same login as the public site, and every privileged mutation writes an audit row.</li>
-      <li>Gated the whole thing behind CI that runs typecheck, lint, API integration tests against real Postgres and Redis, production builds, a boot smoke of the compiled API, and a Playwright walkthrough carrying an axe accessibility scan.</li>
-    </ul>
-  </div>
-
-  <div class="role">
-    <table class="rh"><tr>
-      <td class="rh-l"><span class="co">selfcrafted</span> &nbsp;·&nbsp; Founder and Full-Stack Engineer</td>
-      <td class="rh-r">Aug 2026 to Present</td>
-    </tr></table>
-    <div class="context">My own product. A loop that scouts work matching someone's profile, scores it, drafts the application in their own voice, and waits for a person to approve before anything is sent. Remote.</div>
-    <ul>
-      <li>Built and shipped the whole stack on my own. FastAPI on Cloud Run, Supabase Postgres, and an Expo React Native app, with Google sign-in verified locally against the project's asymmetric JWKS rather than a shared secret.</li>
-      <li>Built per-user credential custody with envelope encryption and refresh tokens that rotate on every use, split the scheduler into a dispatcher and a per-user worker after the serial version fell over at three users, and wired scoring and drafting to the Claude API across two model tiers.</li>
-    </ul>
-  </div>
 
   <div class="role">
     <table class="rh"><tr>
@@ -186,6 +160,35 @@
     <div class="context">Remote.</div>
     <ul>
       <li>SaaS products, e-commerce sites, and landing pages for clients around the world, and front-end lead on the early team projects (React, jQuery, CSS). This is where the Top Rated Plus and 100% Job Success record began, across 24 contracts and more than 1,500 hours. Registered as a sole trader in Albania for straightforward international invoicing.</li>
+    </ul>
+  </div>
+
+  <h2>Projects</h2>
+  <p class="context" style="margin:0 0 14px">My own products. I set the direction, made the product and architecture calls, and reviewed every surface. The implementation is agent-written, which is how I work now.</p>
+
+  <div class="role">
+    <table class="rh"><tr>
+      <td class="rh-l"><span class="co">vendas.al</span> &nbsp;·&nbsp; a real estate portal for Albania</td>
+      <td class="rh-r">2026, pre-launch</td>
+    </tr></table>
+    <div class="context">Agent-only listings, Albanian primary with a full English mirror. A Next.js site plus a separate agent workspace, a Refine admin, a Fastify API with a background worker and an Expo app, on Postgres, Typesense and Redis.</div>
+    <ul>
+      <li>Stripe does not serve Albanian-registered businesses, so rather than wait on a provider I took billing to bank-transfer invoicing carrying Albanian TVSH, which is enough to launch on.</li>
+      <li>Gave agents their own workspace on a subdomain instead of a section of the site, sharing one login across both.</li>
+      <li>Anything slow runs as a background job rather than inside the request, which covers image processing, search indexing, saved-search alerts and agency feed imports.</li>
+    </ul>
+  </div>
+
+  <div class="role">
+    <table class="rh"><tr>
+      <td class="rh-l"><span class="co">selfcrafted</span> &nbsp;·&nbsp; a job-search platform</td>
+      <td class="rh-r">2026</td>
+    </tr></table>
+    <div class="context">Scouts work matching someone's profile, scores it, drafts the application in their own voice, and waits for a person to approve before anything is sent. FastAPI on Cloud Run, Supabase Postgres, an Expo app.</div>
+    <ul>
+      <li>Kept submission human by construction. Nothing is ever sent without someone tapping approve, which is the quality line and the compliance line at once.</li>
+      <li>Ran the loop server-side on a schedule rather than on the phone, because a phone cannot be relied on to wake up.</li>
+      <li>Split drafting across two model tiers, a cheap one for the first read and a strong one for anything written, with the static part of the prompt cached.</li>
     </ul>
   </div>
 
