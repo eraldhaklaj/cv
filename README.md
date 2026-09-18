@@ -12,7 +12,7 @@ on a marketing platform that peaked near a million sessions an hour in NFL seaso
 the NFL).
 
 I don't hand-write much code anymore. I direct Claude Code and Cursor, and the useful part is knowing
-when to throw the output away. My own projects (vendas.al, selfcrafted) are built that way end to end:
+when to throw the output away. My own projects are built that way end to end:
 I set the direction and the product and architecture calls, and reviewed every surface.
 
 Working code you can read:
