@@ -56,17 +56,16 @@
   }
   @media print{
     .dl{display:none}
-    body{ font-size:8.75pt; line-height:1.38; }
+    body{ font-size:10pt; line-height:1.45; }
     .page{ padding:0; max-width:none; }
-    .hdr{ margin-bottom:12px; }
-    .hdr img{ width:84px; height:84px; }
-    h2{ margin:18px 0 8px; }
-    p{ margin:0 0 7px; }
-    ul{ margin:4px 0 0; }
-    li{ margin:0 0 5px; }
-    .role{ margin-bottom:15px; }
-    .context{ margin:2px 0 6px; }
-    ul{ break-inside:auto; }
+    .hdr{ margin-bottom:18px; }
+    .hdr img{ width:88px; height:88px; }
+    h2{ margin:22px 0 10px; }
+    p{ margin:0 0 8px; }
+    ul{ margin:5px 0 0; }
+    li{ margin:0 0 6px; }
+    .role{ margin-bottom:17px; break-inside:avoid; page-break-inside:avoid; }
+    .context{ margin:2px 0 7px; }
   }
 </style>
 </head>
@@ -90,13 +89,27 @@
 
   <h2>Core Skills</h2>
   <div class="skills">
-    <p><b>Front end:</b> React, Next.js, TypeScript, EmberJS, Vite, Redux, Three.js, Storybook, GraphQL and Apollo Client, JavaScript, SCSS, Bootstrap, HTML and CSS</p>
-    <p><b>Back end:</b> Node.js, Ruby on Rails, Java (Spring), Python and FastAPI, PHP, REST APIs, JWT auth, payment integrations</p>
-    <p><b>Data:</b> PostgreSQL, MySQL, PL/SQL, Supabase, relational schema design</p>
-    <p><b>Ways of working:</b> owning features end to end, product and UX judgment, large refactors, performance profiling, A/B testing and feature flags, agile teams and release rotations, code review and mentoring, directing coding agents against a spec</p>
+    <p><b>Front end:</b> React, Next.js, TypeScript, React Native and Expo, EmberJS, Vite, Redux, Three.js, Tailwind, Storybook, GraphQL and Apollo Client, JavaScript, SCSS, HTML and CSS</p>
+    <p><b>Back end:</b> Node.js, Fastify, Ruby on Rails, Java (Spring), Python and FastAPI, Redis and BullMQ, REST APIs, JWT auth, payment integrations</p>
+    <p><b>Data:</b> PostgreSQL, Drizzle, Typesense, MySQL, PL/SQL, Supabase, relational schema design</p>
+    <p><b>Ways of working:</b> owning features end to end, product and UX judgment, large refactors, performance profiling, A/B testing and feature flags, agile teams and release rotations, code review and mentoring, Playwright end-to-end suites in CI, directing coding agents against a spec</p>
   </div>
 
   <h2>Experience</h2>
+
+  <div class="role">
+    <table class="rh"><tr>
+      <td class="rh-l"><span class="co">vendas.al</span> &nbsp;·&nbsp; Founder and Full-Stack Engineer</td>
+      <td class="rh-r">Jul 2026 to Present</td>
+    </tr></table>
+    <div class="context">My own product, pre-launch. A real estate portal for Albania, agent-only listings, Albanian primary with a full English mirror. Six apps in one Turborepo monorepo, the public site and a separate agent workspace on its own subdomain, a Refine admin, a Fastify API with a background worker, an Expo app and a Playwright suite. Remote.</div>
+    <ul>
+      <li>Designed the data and search layer on Postgres with Drizzle and Typesense, and moved everything slow off the request path into thirteen BullMQ queues, covering image processing, search index sync, saved-search and favourites alerts, agency feed import, analytics rollup, sitemap generation and listing expiry.</li>
+      <li>Stripe does not serve Albanian-registered businesses, so rather than wait on a provider I built the billing core provider-agnostic with bank-transfer invoicing that carries Albanian TVSH, which is enough to launch on.</li>
+      <li>One session cookie spans the subdomains so the agent workspace authenticates against the same login as the public site, and every privileged mutation writes an audit row.</li>
+      <li>Gated the whole thing behind CI that runs typecheck, lint, API integration tests against real Postgres and Redis, production builds, a boot smoke of the compiled API, and a Playwright walkthrough carrying an axe accessibility scan.</li>
+    </ul>
+  </div>
 
   <div class="role">
     <table class="rh"><tr>
